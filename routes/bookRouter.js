@@ -1,0 +1,18 @@
+
+const { Router } = require("express");
+
+const booksRouter = Router();
+
+booksRouter.get("/", (req, res) => res.send("All books"));
+booksRouter.get("/:bookId", (req, res) => {
+  const { bookId } = req.params;
+  res.send(`Book ID: ${bookId}`);
+});
+booksRouter.get("/:bookId/reserve",  (req, res)=>   {    
+res.send("All reserved books")});   
+ booksRouter.post("/:bookId/reserve",  (req, res)=>   {    
+res.send("Book reserved")}  );    
+
+ 
+
+module.exports = booksRouter;
