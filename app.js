@@ -8,6 +8,10 @@ const authorRouter = require("./routes/authorRouter");
 const booksRouter = require("./routes/bookRouter");
   const { getUserById } = require("./controllers/usersController");
   const path = require("path");
+  const links = [
+  { href: "/", text: "Home" },
+  { href: "about", text: "About" },
+];
  
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -27,7 +31,7 @@ app.get("/:username/messages/:messageId", (req, res) => {
   res.end();
 });
 app.get("/views", (req, res) => {
-  res.render("index", { title: "My Express App", message: "Hello, EJS!" });
+  res.render("index", { title: "My Express App", message: "Hello, EJS!" , links: links});
 });
  
 app.use((err, req, res, next) => {
