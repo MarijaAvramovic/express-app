@@ -11,7 +11,12 @@ const booksRouter = require("./routes/bookRouter");
   const links = [
   { href: "/", text: "Home" },
   { href: "about", text: "About" },
+  { href: "contact", text: "Contact" },
 ];
+const users = ["Rose", "Cake", "Biff"];
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
+
  
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -31,9 +36,11 @@ app.get("/:username/messages/:messageId", (req, res) => {
   res.end();
 });
 app.get("/views", (req, res) => {
-  res.render("index", { title: "My Express App", message: "Hello, EJS!" , links: links});
+  res.render("index", { title: "My Express App", message: "Hello, EJS!" , links: links, users: users});
 });
- 
+app.get("/aboutdbl", (req, res) => {
+  res.render("about", { title: "About Us", message: "Welcome to the about page!" });
+});
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.statusCode || 500).send(err.message);

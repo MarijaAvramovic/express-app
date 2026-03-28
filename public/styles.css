@@ -1,0 +1,11 @@
+body {
+ color: rgb(225, 75, 225);
+ display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif; 
+    
+}
