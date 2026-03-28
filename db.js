@@ -13,9 +13,9 @@ const books = [
 ];
 
 const users = [
-  { id: 1, name: "user1" , message: "Hello, I'm user1"},
-  { id: 2, name: "user2" , message: "Hello, I'm user2"},
-  { id: 3, name: "user3" , message: "Hello, I'm user3"},
+  { id: 1, name: "prda" , message: "Hello, I'm user1"},
+  { id: 2, name: "mali" , message: "Hello, I'm user2"},
+  { id: 3, name: "smrda" , message: "Hello, I'm user3"},
 ];
 
 async function getUserById(userId) {
@@ -30,4 +30,4 @@ async function getBookById(bookId) {
   return books.find(book => book.id === bookId);
 }
 
-module.exports = { getAuthorById , getBookById };
+module.exports = { getAuthorById , getBookById,getUserById };
