@@ -8,16 +8,16 @@ const PORT = process.env.PORT || 3000;
 const indexRouter = require("./routes/indexRouter");
 const authorRouter = require("./routes/authorRouter");
 const booksRouter = require("./routes/bookRouter");
+  const { getUserById } = require("./controllers/usersController");
+ 
 
 app.use("/", indexRouter);
 app.use("/authors", authorRouter);
 app.use("/books", booksRouter);
 
  
-app.get("/:username/messages", (req, res) => {
-  console.log(req.params);
-  res.end();
-});
+app.get("/:username/messages", getUserById);
+
 app.get("/:username/messages/:messageId", (req, res) => {
   console.log(req.params);
   const hello = req.params.messageId;
@@ -26,10 +26,10 @@ app.get("/:username/messages/:messageId", (req, res) => {
   res.end();
 });
 
-// Every thrown error in the application or the previous middleware function calling `next` with an error as an argument will eventually go to this middleware function
+ 
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).send(err);
+  res.status(err.statusCode || 500).send(err.message);
 });
 
 
