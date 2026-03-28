@@ -11,7 +11,9 @@ booksRouter.get("/:bookId", (req, res) => {
 booksRouter.get("/:bookId/reserve",  (req, res)=>   {    
 res.send("All reserved books")});   
  booksRouter.post("/:bookId/reserve",  (req, res)=>   {    
-res.send("Book reserved")}  );    
+res.send("Book reserved" + req.params.bookId)
+
+}  );    
 
  
 
