@@ -1,7 +1,5 @@
 
 require("dotenv").config();
-
-
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,7 +7,10 @@ const indexRouter = require("./routes/indexRouter");
 const authorRouter = require("./routes/authorRouter");
 const booksRouter = require("./routes/bookRouter");
   const { getUserById } = require("./controllers/usersController");
+  const path = require("path");
  
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 app.use("/", indexRouter);
 app.use("/authors", authorRouter);
@@ -25,7 +26,9 @@ app.get("/:username/messages/:messageId", (req, res) => {
     console.log("Query:", req.query);
   res.end();
 });
-
+app.get("/views", (req, res) => {
+  res.render("index", { title: "My Express App", message: "Hello, EJS!" });
+});
  
 app.use((err, req, res, next) => {
   console.error(err);
